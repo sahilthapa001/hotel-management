@@ -15,7 +15,7 @@ const defaultFormData = {
 const Auth = () => {
   const [formData, setFormData] = useState(defaultFormData);
   const inputStyles =
-    "border border-gray-300 sm:text-sm text-black rounded:lg block w-full p-2.5 focus:outline-none";
+    "border border-gray-300 sm:text-sm text-black rounded-lg block w-full p-2.5 focus:outline-none";
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;

@@ -30,6 +30,11 @@ const user = {
       type: "url",
     }),
     defineField({
+      name: "email",
+      title: "Email",
+      type: "string",
+    }),
+    defineField({
       name: "password",
       type: "string",
       hidden: true,
