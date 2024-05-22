@@ -37,7 +37,7 @@ const hotelRoom = {
       title: "Price",
       type: "number",
       validation: (Rule) =>
-        Rule.required().max(50).error("Maximum 50 Characters"),
+        Rule.required().min(100).error("Maximum 50 Characters"),
     }),
     defineField({
       name: "discount",
@@ -92,11 +92,9 @@ const hotelRoom = {
     }),
     defineField({
       name: "specialNote",
-      title: "Special Note",
+      title: "SpecialNote",
       type: "text",
-      options: {
-        list: roomTypes,
-      },
+
       validation: (Rule) => Rule.required(),
       initialValue:
         "Check-in time is 12:00 PM, checkout time is 11:59 AM. If you leave behind any items, please contact the receptionist.",
