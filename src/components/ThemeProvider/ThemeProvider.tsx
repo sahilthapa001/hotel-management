@@ -14,7 +14,7 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     setRenderComponent(true);
   }, []);
-  if (!renderComponent) return <></>;
+  if (!renderComponent) return;
   return (
     <ThemeContext.Provider value={{ darkTheme, setDarkTheme }}>
       <div className={`${darkTheme ? "dark" : " "} min-h-screen`}>
