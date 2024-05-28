@@ -60,7 +60,7 @@ const RoomDetails = (props: { params: { slug: string } }) => {
 
     const hotelRoomSlug = room.slug.current;
 
-    //Integrate Stripe
+    //Integrating Stripe
   };
 
   return (
