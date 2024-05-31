@@ -12,6 +12,8 @@ import BookRoomCta from "@/components/BookRoomCta/BookRoomCta";
 import { useState } from "react";
 import { handleClientScriptLoad } from "next/script";
 import toast from "react-hot-toast";
+import axios from "axios";
+import { getStripe } from "@/libs/stripe";
 
 const RoomDetails = (props: { params: { slug: string } }) => {
   const {
@@ -49,7 +51,7 @@ const RoomDetails = (props: { params: { slug: string } }) => {
     return noOfDays;
   };
 
-  const handleBookNowClick = () => {
+  const handleBookNowClick = async () => {
     if (!checkinDate || !checkoutDate)
       return toast.error("Please provide checkin /checkout date");
 
@@ -59,8 +61,28 @@ const RoomDetails = (props: { params: { slug: string } }) => {
     const numberOfDays = calcNoOfDays();
 
     const hotelRoomSlug = room.slug.current;
-
-    //Integrating Stripe
+    const stripe = await getStripe();
+    try {
+      const { data: stripeSession } = await axios.post("/api/stripe", {
+        checkinDate,
+        checkoutDate,
+        adults,
+        children: noOfChildren,
+        numberOfDays,
+        hotelRoomSlug,
+      });
+      if (stripe) {
+        const result = await stripe.redirectToCheckout({
+          sessionId: stripeSession.id,
+        });
+        if (result.error) {
+          toast.error("Payment Failed");
+        }
+      }
+    } catch (error) {
+      console.log("Error: ", error);
+      toast.error("An error occured");
+    }
   };
 
   return (

@@ -35,6 +35,7 @@ const BookRoomCta: FC<Props> = (props) => {
     setAdults,
     setNoOfChildren,
     isBooked,
+    handleBookNowClick,
   } = props;
   const discountPrice = price - (price / 100) * discount;
 
@@ -144,7 +145,7 @@ const BookRoomCta: FC<Props> = (props) => {
       )}
       <button
         disabled={isBooked}
-        // onClick={handleBookNowClick}
+        onClick={handleBookNowClick}
         className="btn-primary w-full mt-6 disabled:bg-gray-500 disabled:cursor-not-allowed"
       >
         {isBooked ? "Booked " : "Book Now"}
