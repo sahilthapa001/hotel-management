@@ -7,7 +7,7 @@ import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { useSession } from "next-auth/react";
 
 import Image from "next/image";
-import ThemeContext from "../../context/themeContext";
+import { ThemeContext } from "../ThemeProvider/ThemeProvider";
 
 const Header = () => {
   const { darkTheme, setDarkTheme } = useContext(ThemeContext);

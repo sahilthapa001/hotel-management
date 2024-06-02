@@ -2,7 +2,17 @@
 
 import { useEffect, useState } from "react";
 
-import ThemeContext from "../../context/themeContext";
+import { Dispatch, SetStateAction, createContext } from "react";
+
+type ThemeContextType = {
+  darkTheme: boolean;
+  setDarkTheme: Dispatch<SetStateAction<boolean>>;
+};
+
+export const ThemeContext = createContext<ThemeContextType>({
+  darkTheme: true,
+  setDarkTheme: () => null,
+});
 
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const themeFromStorage: boolean =
