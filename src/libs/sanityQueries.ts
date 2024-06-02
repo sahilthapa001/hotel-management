@@ -1,6 +1,6 @@
-import { groq } from "next-sanity";
+import { groq } from 'next-sanity';
 
-export const getFeaturedRoomQuery = groq`*[_type == 'hotelRoom' && isFeatured == true][0]{
+export const getFeaturedRoomQuery = groq`*[_type == "hotelRoom" && isFeatured == true][0] {
     _id,
     description,
     discount,
@@ -12,8 +12,8 @@ export const getFeaturedRoomQuery = groq`*[_type == 'hotelRoom' && isFeatured ==
     coverImage
 }`;
 
-export const getRoomsQuery = groq`*[_type == 'hotelRoom']{
-    _id,
+export const getRoomsQuery = groq`*[_type == "hotelRoom"] {
+    _id, 
     coverImage,
     description,
     dimension,
@@ -25,7 +25,7 @@ export const getRoomsQuery = groq`*[_type == 'hotelRoom']{
     type
 }`;
 
-export const getRoomQuery = groq`*[_type == 'hotelRoom' && slug.current == $slug][0]{
+export const getRoom = groq`*[_type == "hotelRoom" && slug.current == $slug][0] {
     _id,
     coverImage,
     description,
@@ -41,7 +41,6 @@ export const getRoomQuery = groq`*[_type == 'hotelRoom' && slug.current == $slug
     slug,
     specialNote,
     type
-
 }`;
 
 export const getUserBookingsQuery = groq`*[_type == 'booking' && user._ref == $userId] {
@@ -61,12 +60,22 @@ export const getUserBookingsQuery = groq`*[_type == 'booking' && user._ref == $u
     discount
 }`;
 
-export const getUserDataQuery = groq`*[_type== 'user' && id == $userId][0]{
+export const getUserDataQuery = groq`*[_type == 'user' && _id == $userId][0] {
     _id,
     name,
     email,
     isAdmin,
     about,
     _createdAt,
-    image
+    image,
+}`;
+
+export const getRoomReviewsQuery = groq`*[_type == "review" && hotelRoom._ref == $roomId] {
+    _createdAt,
+    _id,
+    text,
+    user -> {
+        name
+    },
+    userRating
 }`;

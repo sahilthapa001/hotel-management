@@ -12,6 +12,7 @@ type Amenity = {
   amenity: string;
   icon: string;
 };
+
 type Slug = {
   _type: string;
   current: string;
@@ -25,7 +26,7 @@ export type Room = {
   discount: number;
   images: Image[];
   isBooked: boolean;
-  isFeatured: string;
+  isFeatured: boolean;
   name: string;
   numberOfBeds: number;
   offeredAmenities: Amenity[];

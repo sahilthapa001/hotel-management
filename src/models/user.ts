@@ -4,6 +4,6 @@ export type User = {
   email: string;
   isAdmin: boolean;
   about: string | null;
-  createdAt: string;
+  _createdAt: string;
   image: string;
 };

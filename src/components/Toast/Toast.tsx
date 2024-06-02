@@ -1,6 +1,7 @@
-"use client";
-import { Toaster } from "react-hot-toast";
-//using toast package for attractive notification alert
+'use client';
+
+import { Toaster } from 'react-hot-toast';
+
 const Toast = () => <Toaster />;
 
 export default Toast;
