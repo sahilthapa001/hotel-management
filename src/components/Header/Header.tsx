@@ -6,8 +6,8 @@ import { FaUserCircle } from "react-icons/fa";
 import { MdDarkMode, MdOutlineLightMode } from "react-icons/md";
 import { useSession } from "next-auth/react";
 
-import ThemeContext from "@/context/themeContext";
 import Image from "next/image";
+import ThemeContext from "../../context/themeContext";
 
 const Header = () => {
   const { darkTheme, setDarkTheme } = useContext(ThemeContext);
